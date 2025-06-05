@@ -12,6 +12,7 @@ RUN cargo install proxyauth --root /usr/local  -j $(($(nproc) - 1)) --locked
 
 RUN mkdir -p /etc/proxyauth/config && \
     mkdir -p /etc/proxyauth/certs && \
+    mkdir -p /etc/proxyauth/import && \
     openssl req -x509 -newkey rsa:2048 -sha256 -days 1 \
             -nodes \
             -keyout /etc/proxyauth/certs/key.pem \
@@ -19,8 +20,10 @@ RUN mkdir -p /etc/proxyauth/config && \
             -subj "/CN=localhost" && \
     chown -R proxyauth:proxyauth /etc/proxyauth
 
+# prepare user environnement
 RUN proxyauth prepare
 
+# switch user
 USER proxyauth
 
 # Expose the service port
@@ -28,4 +31,3 @@ EXPOSE 8080
 
 # Launch the binary
 CMD ["/usr/local/bin/proxyauth"]
-

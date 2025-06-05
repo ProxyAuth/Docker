@@ -10,5 +10,4 @@ services:
                 soft: 65536
                 hard: 65536
         volumes:
-            - ./config/config.json:/etc/proxyauth/config/config.json:rw
-            - ./config/routes.yml:/etc/proxyauth/config/routes.yml:rw
+          - ./config:/etc/proxyauth/config:rw
