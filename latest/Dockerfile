@@ -11,7 +11,11 @@ RUN addgroup -g 1000 proxyauth && \
 # This is specifically used to allow exporting the build sync from inside the Docker container.
 # You may uncomment the following line if you need to run commands manually, 
 # $ proxyauth sync export
+
 # but this practice is not recommended for production environments.
+# Instead of running commands manually, it is recommended to use a Docker registry
+# and deploy by duplicating containers from a prebuilt image.
+
 #RUN echo "proxyauth:proxyauth" | chpasswd
 #RUN echo "proxyauth ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
