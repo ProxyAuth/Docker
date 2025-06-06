@@ -7,10 +7,11 @@ RUN apk add --no-cache openssl openssl-libs-static openssl-dev musl-dev build-ba
 RUN addgroup -g 1000 proxyauth && \
     adduser -D -u 1000 -G proxyauth -h /home/proxyauth proxyauth
 
-# Add password for proxyauth and sudoer's permission
-# it's particularity for give export the sync build (inside the docker) 
-# you are possible uncomment the line if use the command
-# proxyauth sync export
+# Set a password for the 'proxyauth' user and grant sudo permissions.
+# This is specifically used to allow exporting the build sync from inside the Docker container.
+# You may uncomment the following line if you need to run commands manually, 
+# $ proxyauth sync export
+# but this practice is not recommended for production environments.
 #RUN echo "proxyauth:proxyauth" | chpasswd
 #RUN echo "proxyauth ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
