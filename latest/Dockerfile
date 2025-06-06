@@ -7,6 +7,10 @@ RUN apk add --no-cache openssl openssl-libs-static openssl-dev musl-dev build-ba
 RUN addgroup -g 1000 proxyauth && \
     adduser -D -u 1000 -G proxyauth -h /home/proxyauth proxyauth
 
+# Add password for proxyauth and sudoer's permission
+RUN echo "proxyauth:proxyauth" | chpasswd
+RUN echo "proxyauth ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
 # Install proxyauth from crates.io (adapt version if needed)
 RUN cargo install proxyauth --root /usr/local  -j $(($(nproc) - 1)) --locked
 
