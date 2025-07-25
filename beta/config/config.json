@@ -1,28 +1,44 @@
 {
   "token_expiry_seconds": 432000,
   "secret": "supersecretvalue",
+  "token_admin": "c6a9b46636e72dcf77e5000688f5d82c055534c2783e2c8f8be636df60b7d5b0",
   "host": "0.0.0.0",
   "port": 8080,
+  "log": {
+    "type": "local"
+  },
+  "login_via_otp": false,
+  "max_connections": 50000,
+  "pending_connections_limit": 65535,
+  "socket_listen": 1024,
+  "client_timeout": 5000,
+  "keep_alive": 5000,
   "worker": 8,
-  "log": {"type": "local"},
+  "num_instances": 2,
   "ratelimit_auth": {
+    "burst": 10,
     "block_delay": 5000,
-    "requests_per_second": 5,
-    "burst": 10
+    "requests_per_second": 5
   },
   "ratelimit_proxy": {
-    "requests_per_second": 5,
     "burst": 10,
+    "requests_per_second": 5,
     "block_delay": 5000
   },
   "users": [
     {
       "username": "admin",
-      "password": "$argon2id$v=19$m=19456,t=2,p=1$aZVPx4hZQllgOdwX8i/PYg$Fyw3kArZTM/EKSWEmltNjV5UqW8fJLaFxt9vi95TcWY"
+      "password": "$argon2id$v=19$m=19456,t=2,p=1$aZVPx4hZQllgOdwX8i/PYg$Fyw3kArZTM/EKSWEmltNjV5UqW8fJLaFxt9vi95TcWY",
+      "otpkey": null,
+      "allow": null,
+      "roles": null
     },
     {
       "username": "alice",
-      "password": "$argon2id$v=19$m=19456,t=2,p=1$r73ntuqsRREIylIXQZo+Tw$Vo75eHcuhtCKmycN9aO049HwXU/iW5jHNkCrOSL56zQ"
+      "password": "$argon2id$v=19$m=19456,t=2,p=1$r73ntuqsRREIylIXQZo+Tw$Vo75eHcuhtCKmycN9aO049HwXU/iW5jHNkCrOSL56zQ",
+      "otpkey": null,
+      "allow": null,
+      "roles": null
     }
   ]
 }

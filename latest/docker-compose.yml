@@ -11,3 +11,7 @@ services:
                 hard: 65536
         volumes:
           - ./config:/etc/proxyauth/config:rw
+          - proxyauth-db:/opt/proxyauth/db
+
+volumes:
+  proxyauth-db:
