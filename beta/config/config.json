@@ -7,6 +7,7 @@
   "log": {
     "type": "local"
   },
+  "stats": true,
   "login_via_otp": false,
   "max_connections": 50000,
   "pending_connections_limit": 65535,

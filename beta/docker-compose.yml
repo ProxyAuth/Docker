@@ -1,10 +1,7 @@
 services:
     proxyauth:
-        container_name: proxyauth_beta
         build: .
         user: "1000:1000"
-        ports:
-            - "8080:8080"
         ulimits:
             nofile:
                 soft: 65536
@@ -12,6 +9,7 @@ services:
         volumes:
           - ./config:/etc/proxyauth/config:rw
           - proxyauth-db:/opt/proxyauth/db
-
+        ports:
+          - 8080:8080
 volumes:
   proxyauth-db:

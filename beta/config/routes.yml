@@ -3,3 +3,5 @@ routes:
     target: "http://127.0.0.1:8500"
     secure: true
     username: ["admin"]
+    backends:
+        - "http://127.0.0.1:8500"
