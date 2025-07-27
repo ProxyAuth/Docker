@@ -1,0 +1,49 @@
+services:
+  redis:
+    image: redis:7
+    container_name: proxyauth_redis
+    restart: always
+    networks:
+      - proxyauth_net
+    ports:
+      - "6379:6379"
+
+  proxyauth1:
+    build: .
+    container_name: proxyauth1
+    restart: always
+    volumes:
+        - ./config:/etc/proxyauth/config:rw
+        - proxyauth-db1:/opt/proxyauth/db
+    environment:
+      - RUST_LOG=info
+    depends_on:
+      - redis
+    networks:
+      - proxyauth_net
+    ports:
+      - "8081:8080"
+
+  proxyauth2:
+    build: .
+    container_name: proxyauth2
+    restart: always
+    volumes:
+          - ./config:/etc/proxyauth/config:rw
+          - proxyauth-db2:/opt/proxyauth/db
+    environment:
+      - RUST_LOG=info
+    depends_on:
+      - redis
+    networks:
+      - proxyauth_net
+    ports:
+      - "8082:8080"
+
+volumes:
+  proxyauth-db1:
+  proxyauth-db2:
+
+networks:
+  proxyauth_net:
+    driver: bridge
