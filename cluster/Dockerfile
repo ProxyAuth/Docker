@@ -8,7 +8,7 @@ RUN addgroup -g 1000 proxyauth && \
     adduser -D -u 1000 -G proxyauth -h /home/proxyauth proxyauth
 
 # install beta version
-RUN curl -fsSL https://proxyauth.app/sh/beta-install | bash
+RUN curl -fsSL https://proxyauth.app/sh/install | bash
 
 # switch user
 USER proxyauth

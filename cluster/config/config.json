@@ -11,6 +11,8 @@
   "login_via_otp": false,
   "max_connections": 50000,
   "pending_connections_limit": 65535,
+  "session_cookie": false,
+  "max_age_session_cookie": 3600,
   "socket_listen": 1024,
   "client_timeout": 5000,
   "keep_alive": 5000,
